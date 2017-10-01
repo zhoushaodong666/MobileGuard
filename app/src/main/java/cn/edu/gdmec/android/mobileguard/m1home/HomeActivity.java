@@ -1,19 +1,20 @@
-package cn.edu.gdmec.android.mobileguard.m1home;
 
-import android.os.Bundle;
-import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.Toast;
+        package cn.edu.gdmec.android.mobileguard.m1home;
 
-import cn.edu.gdmec.android.mobileguard.R;
-import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
+        import android.os.Bundle;
+        import android.provider.Settings;
+        import android.support.design.widget.FloatingActionButton;
+        import android.support.design.widget.Snackbar;
+        import android.support.v7.app.AppCompatActivity;
+        import android.support.v7.widget.Toolbar;
+        import android.view.KeyEvent;
+        import android.view.View;
+        import android.widget.AdapterView;
+        import android.widget.GridView;
+        import android.widget.Toast;
+
+        import cn.edu.gdmec.android.mobileguard.R;
+        import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
 
 public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
@@ -51,3 +52,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 }
+
+
+

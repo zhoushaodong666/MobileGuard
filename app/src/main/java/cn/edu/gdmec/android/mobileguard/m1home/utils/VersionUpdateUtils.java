@@ -83,7 +83,7 @@ public class VersionUpdateUtils {
             HttpGet httpGet = new HttpGet("http://android2017.duapp.com/updateinfo.html");HttpResponse execute = httpClient.execute(httpGet);
             if(execute.getStatusLine().getStatusCode()==200){
                 HttpEntity httpEntity = execute.getEntity();
-                String result = EntityUtils.toString(httpEntity,"uft-8");
+                String result = EntityUtils.toString(httpEntity,"utf-8");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();
                 versionEntity.versioncode = jsonObject.getString("code");
