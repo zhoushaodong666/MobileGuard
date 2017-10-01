@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.gdmec.android.mobileguard">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="MobileGuard"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,5 +18,12 @@
         </activity>
         <activity android:name=".m1home.HomeActivity"></activity>
     </application>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" ></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" ></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" ></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
 </manifest>
