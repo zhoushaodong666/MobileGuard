@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tv_home"
             android:textSize="16sp"
-            android:text="老板大人，我是你的手机小卫士"
+            android:text="老板大大大大大大大人，我是你的手机小卫士"
             android:textColor="#90000000"
             android:textScaleX="1.1"
             android:typeface="normal" />
