@@ -17,13 +17,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".m1home.HomeActivity"></activity>
+        <activity android:name=".m2theftguard.utils.LostFindActivity"/>
+        <activity android:name=".m2theftguard.utils.Setup1Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup2Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup3Activity"/>
+        <activity android:name=".m2theftguard.utils.Setup4Activity"/>
+
     </application>
-    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" ></uses-permission>
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" ></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" ></uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" ></uses-permission>
     <uses-permission android:name="android.permission.INTERNET" ></uses-permission>
-    <uses-permission android:name="android.permission.WAKE_LOCK" ></uses-permission>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
 </manifest>
