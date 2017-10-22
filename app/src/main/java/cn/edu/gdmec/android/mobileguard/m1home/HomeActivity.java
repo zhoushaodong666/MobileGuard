@@ -4,11 +4,7 @@
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
-        import android.provider.Settings;
-        import android.support.design.widget.FloatingActionButton;
-        import android.support.design.widget.Snackbar;
         import android.support.v7.app.AppCompatActivity;
-        import android.support.v7.widget.Toolbar;
         import android.text.TextUtils;
         import android.view.KeyEvent;
         import android.view.View;
@@ -16,16 +12,12 @@
         import android.widget.GridView;
         import android.widget.Toast;
 
-        import org.w3c.dom.Text;
-
         import cn.edu.gdmec.android.mobileguard.R;
         import cn.edu.gdmec.android.mobileguard.m1home.adapter.HomeAdapter;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
-        import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.LostFindActivity;
+        import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
-
-        import static android.R.id.edit;
 
         public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
