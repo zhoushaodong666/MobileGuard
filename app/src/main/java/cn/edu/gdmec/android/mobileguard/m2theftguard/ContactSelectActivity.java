@@ -1,4 +1,5 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
+
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,8 @@ import java.util.List;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.adapter.ContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
-import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactlnfoParser;
 
+import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactlnfoParser;
 
 public class ContactSelectActivity extends AppCompatActivity implements View.OnClickListener{
     private ListView mListView;
@@ -25,7 +26,7 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
                 case 10:
-                    if(systemContacts!= null){
+                    if(systemContacts != null){
                         adapter = new ContactAdapter(systemContacts,ContactSelectActivity.this);
                         mListView.setAdapter(adapter);
                     }
