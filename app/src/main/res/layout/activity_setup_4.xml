@@ -56,7 +56,7 @@
         android:background="@drawable/toggle_btn_bg_selector"
         android:textOff=""
         android:textOn=""
-        android:id="@+id/toggleButton" />
+        android:id="@+id/togglebtn_securityfunction" />
 </RelativeLayout>
     </LinearLayout>
     <LinearLayout
