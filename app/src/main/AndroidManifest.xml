@@ -10,7 +10,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
-    
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -43,7 +43,7 @@
         <service android:name=".m2theftguard.service.GPSLocationService"
                   android:enabled="true"
                   android:exported="true" />
-        
+
         <receiver android:name=".m2theftguard.receiver.SmsLostFindReceiver"
             android:enabled="true"
             android:exported="true">
@@ -51,7 +51,8 @@
                 <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name=".m2theftguard.receiver.MyDeviceAdminReceiver"
+        <receiver
+            android:name=".m2theftguard.receiver.MyDeviceAdminReceiver"
             android:permission="android.permission.BIND_DEVICE_ADMIN"
             android:enabled="true"
             android:exported="true">
@@ -60,10 +61,10 @@
                 android:resource="@xml/device_admin_sample"/>
 
             <intent-filter>
-                <action android:name="android.app.DEVICE_ADMIN_ENABLED"/>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED"/>
             </intent-filter>
         </receiver>
-          
+
     </application>
 
 </manifest>
