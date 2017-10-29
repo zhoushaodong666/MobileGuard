@@ -55,6 +55,7 @@ public class Setup4Activity extends BaseSetUpActivity{
     public void showNext() {
         SharedPreferences.Editor editor = sp.edit();
         editor.putBoolean("isSetup",true);
+        editor.commit();
         startActivityAndFinishSelf(LostFindActivity.class);
     }
 

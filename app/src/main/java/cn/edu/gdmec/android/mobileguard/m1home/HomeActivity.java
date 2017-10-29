@@ -26,8 +26,8 @@
     private GridView gv_home;
     private long mExitTime;
     private SharedPreferences msharedPreferences;
-            private DevicePolicyManager policyManager;
-            private ComponentName componentName;
+    private DevicePolicyManager policyManager;
+    private ComponentName componentName;
 
             @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,6 @@
                 }
             }
         });
-
 
                 policyManager=(DevicePolicyManager)getSystemService(DEVICE_POLICY_SERVICE);
                 componentName=new ComponentName(this,MyDeviceAdminReceiver.class);
