@@ -20,7 +20,7 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.service.GPSLocationService;
  */
 
 public class SmsLostFindReceiver extends BroadcastReceiver{
-    private static final String TAG=SmsLostFindReceiver.class.getSimpleName();
+    private static final String TAG = SmsLostFindReceiver.class.getSimpleName();
     private SharedPreferences sharedPreferences;
     private ComponentName componentName;
     @Override

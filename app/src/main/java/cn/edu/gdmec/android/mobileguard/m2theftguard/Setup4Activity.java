@@ -26,7 +26,6 @@ public class Setup4Activity extends BaseSetUpActivity{
         ((RadioButton)findViewById(R.id.rb_four)).setChecked(true);
         mStatusTV = (TextView) findViewById(R.id.tv_setup4_status);
         mToggleButton = (ToggleButton)findViewById(R.id.togglebtn_securityfunction);
-
         mToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
