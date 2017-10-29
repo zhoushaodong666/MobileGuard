@@ -1,6 +1,8 @@
 
         package cn.edu.gdmec.android.mobileguard.m1home;
 
+        import android.app.admin.DevicePolicyManager;
+        import android.content.ComponentName;
         import android.content.Intent;
         import android.content.SharedPreferences;
         import android.os.Bundle;
@@ -17,13 +19,17 @@
         import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.InterPasswordDialog;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.dialog.SetUpPasswordDialog;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.LostFindActivity;
+        import cn.edu.gdmec.android.mobileguard.m2theftguard.receiver.MyDeviceAdminReceiver;
         import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
         public class HomeActivity extends AppCompatActivity {
     private GridView gv_home;
     private long mExitTime;
     private SharedPreferences msharedPreferences;
-    @Override
+            private DevicePolicyManager policyManager;
+            private ComponentName componentName;
+
+            @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
@@ -31,7 +37,7 @@
         msharedPreferences = getSharedPreferences("config",MODE_PRIVATE);
         gv_home = (GridView) findViewById(R.id.gv_home);
         gv_home.setAdapter(new HomeAdapter(HomeActivity.this));
-        gv_home.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        gv_home.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int i, long id) {
                 switch (i){
@@ -46,6 +52,18 @@
                 }
             }
         });
+
+
+                policyManager=(DevicePolicyManager)getSystemService(DEVICE_POLICY_SERVICE);
+                componentName=new ComponentName(this,MyDeviceAdminReceiver.class);
+                boolean active=policyManager.isAdminActive(componentName);
+                if(!active){
+                    Intent intent =new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+                    intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN,componentName);
+                    intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,"获取超级管理员权限，用于远程锁屏和清除数据");
+                    startActivity(intent);
+
+                }
 
     }
         public void startActivity(Class<?>cls){
