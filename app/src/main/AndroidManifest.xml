@@ -58,6 +58,7 @@
             <meta-data
                 android:name="android.app.device_admin"
                 android:resource="@xml/device_admin_sample"/>
+
             <intent-filter>
                 <action android:name="android.app.DEVICE_ADMIN_ENABLED"/>
             </intent-filter>
