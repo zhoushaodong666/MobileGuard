@@ -17,7 +17,6 @@ public class Setup4Activity extends BaseSetUpActivity{
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup_4);
-
         ((RadioButton)findViewById(R.id.rb_four)).setChecked(true);
         initView();
     }
@@ -37,6 +36,7 @@ public class Setup4Activity extends BaseSetUpActivity{
                 SharedPreferences.Editor editor = sp.edit();
                 editor.putBoolean("protecting",isChecked);
                 editor.commit();
+
             }
 
         });
@@ -53,7 +53,7 @@ public class Setup4Activity extends BaseSetUpActivity{
     @Override
     public void showNext() {
         SharedPreferences.Editor editor = sp.edit();
-        editor.putBoolean("isSetup",true);
+        editor.putBoolean("isSetUp",true);
         editor.commit();
         startActivityAndFinishSelf(LostFindActivity.class);
     }
@@ -61,6 +61,5 @@ public class Setup4Activity extends BaseSetUpActivity{
     @Override
     public void showPre() {
         startActivityAndFinishSelf(Setup3Activity.class);
-
     }
 }

@@ -26,9 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private long mExitTime;
 
     private SharedPreferences msharedPreferences;
-
     private DevicePolicyManager policyManager;
-
     private ComponentName componentName;
 
     @Override
