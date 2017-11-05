@@ -61,6 +61,3 @@ public class ContactAdapter extends BaseAdapter{
         TextView mPhoneTV;
     }
 }
-
-
-
