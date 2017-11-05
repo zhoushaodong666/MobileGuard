@@ -101,6 +101,20 @@ public class BlackNumberDao {
         db.close();
         return count;
     }
+
+
+    public boolean delete(BlackContactInfo blackContactInfo) {
+    SQLiteDatabase db=blackNumberOpenHelper.getWritableDatabase();
+        db = blackNumberOpenHelper.getWritableDatabase();
+        int rownumber =db.delete("blacknumber","number=?",new String[]{
+                blackContactInfo.phoneNumber
+        });
+        if(rownumber==0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
 
 
