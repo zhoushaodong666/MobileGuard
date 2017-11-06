@@ -52,7 +52,7 @@ public class ExampleInstrumentedTest {
         // 按home键，返回到主界面
         mDevice.pressHome();
 
-        // 等待应用装载运行
+        // 等待应用装载运行 m
         final String launcherPackage = mDevice.getLauncherPackageName();
         assertThat(launcherPackage, notNullValue());
         mDevice.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
