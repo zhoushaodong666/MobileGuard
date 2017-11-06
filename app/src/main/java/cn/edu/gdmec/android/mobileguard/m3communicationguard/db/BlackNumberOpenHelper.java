@@ -5,7 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 /**
- * Created by 11388 on 2017/11/5.
+ * Created by Lenovo on 2017/11/4.
  */
 
 public class BlackNumberOpenHelper extends SQLiteOpenHelper {
@@ -22,13 +22,12 @@ public class BlackNumberOpenHelper extends SQLiteOpenHelper {
 
     public BlackNumberOpenHelper(Context context,String name,SQLiteDatabase.CursorFactory factory,int version){
         super(context,name,factory,version);
-        this.DB_NAME = name;
-        this.VERSION = version;
+        this.DB_NAME=name;
+        this.VERSION=version;
     }
-
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-       sqLiteDatabase.execSQL("create table blacknumber"+"(id integer primary key autoincrement,"+"number varchar(20),"+"name varchar(255),"+"mode integer)");
+        sqLiteDatabase.execSQL("create table blacknumber" + "(id integer primary key autoincrement," + "number varchar(20)," + "name varchar(255),"+"mode integer)");
 
     }
 

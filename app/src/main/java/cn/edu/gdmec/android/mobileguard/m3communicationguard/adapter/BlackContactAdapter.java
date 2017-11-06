@@ -1,5 +1,4 @@
 package cn.edu.gdmec.android.mobileguard.m3communicationguard.adapter;
-
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,10 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberD
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
 /**
- * Created by Administrator on 2017/10/30 0030.
+ * Created by Lee on 2017/11/3.
  */
 
-public class BlackContactAdapter extends BaseAdapter {
+public class BlackContactAdapter  extends BaseAdapter {
     private List<BlackContactInfo> contactInfos;
     private Context context;
     private BlackNumberDao dao;
@@ -92,4 +91,5 @@ public class BlackContactAdapter extends BaseAdapter {
         return view;
 
     }
+
 }

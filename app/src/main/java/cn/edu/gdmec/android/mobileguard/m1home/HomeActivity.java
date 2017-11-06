@@ -51,7 +51,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 1:
                         startActivity(SecurityPhoneActivity.class);
-                        break;
 
                 }
             }
