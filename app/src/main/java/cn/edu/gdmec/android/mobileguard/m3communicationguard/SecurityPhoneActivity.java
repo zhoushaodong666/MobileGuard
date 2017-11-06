@@ -21,9 +21,6 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.adapter.BlackContac
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
-/**
- * Created by Lenovo on 2017/11/4.
- */
 
 public class SecurityPhoneActivity extends AppCompatActivity implements View.OnClickListener{
     //有黑名单显示的
