@@ -20,17 +20,25 @@
     <TextView
         android:id="@+id/tv_black_mode"
         style="@style/textview14sp"
-        android:layout_toRightOf="@+id/view_black_icon"
         android:layout_below="@+id/tv_black_name"
         android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/view_black_icon"
         android:textColor="@color/purple" />
+    <TextView
+        android:id="@+id/tv_black_type"
+        style="@style/textview14sp"
+        android:layout_below="@+id/tv_black_name"
+        android:layout_marginTop="40dp"
+        android:layout_toRightOf="@+id/view_black_icon"
+        android:textColor="@color/purple" />
+
     <View
         android:id="@+id/view_black_delete"
         android:layout_width="34dp"
         android:layout_height="40dp"
-        android:background="@drawable/delete_icon"
         android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
         android:layout_marginRight="20dp"
-        android:layout_centerVertical="true" />
+        android:background="@drawable/delete_icon" />
 
 </RelativeLayout>
