@@ -179,17 +179,17 @@ public class AppManagerAdapter extends BaseAdapter {
                  break;
 
                  case R.id.tv_share_app:
-                     EngineUtils.startApplication(context,appInfo);
+                     EngineUtils.shareApplication(context,appInfo);
                      break;
                  case  R.id.tv_setting_app:
-                     EngineUtils.startApplication(context,appInfo);
+                     EngineUtils.SettingAppDetail(context,appInfo);
                      break;
                  case R.id.tv_uninstall_app:
                     if(appInfo.packageName.equals(context.getPackageName())){
                         Toast.makeText(context,"您没有权限卸载此应用",Toast.LENGTH_SHORT).show();
                         return;
                     }
-                     EngineUtils.startApplication(context,appInfo);
+                     EngineUtils.uninstallApplication(context,appInfo);
                      break;
              }
          }

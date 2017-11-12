@@ -15,10 +15,13 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 public class EngineUtils {
     /*分享应用*/
     public static void shareApplication(Context context, AppInfo appInfo){
-        Intent intent = new Intent("android.,intent.action.SEND");
-        intent.addCategory("andrpid.intent.category.DEFAULT");
+        Intent intent = new Intent("android.intent.action.SEND");
+        intent.addCategory("android.intent.category.DEFAULT");
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT,"推荐您使用一款软件，名称叫："+appInfo.appName+"下载路径：https://play.goole.com/store/apps/details?id="+appInfo.packageName);
+        intent.putExtra(Intent.EXTRA_TEXT,
+                "推荐您使用一款软件，名称叫："+appInfo.appName
+                        +"下载路径：https://play.goole.com/store/apps/details?id="
+                        +appInfo.packageName);
         context.startActivity(intent);
     }
 
