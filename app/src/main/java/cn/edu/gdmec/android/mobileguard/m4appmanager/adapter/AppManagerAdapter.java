@@ -104,7 +104,7 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mSettingAppTV = (TextView) view.findViewById(R.id.tv_setting_app);
             viewHolder.mShareAppTV = (TextView) view.findViewById(R.id.tv_share_app);
             viewHolder.mUninstallTV = (TextView) view.findViewById(R.id.tv_uninstall_app);
-            viewHolder.mAboutAppBtn = (Button) view.findViewById(R.id.btn_abouticon_app);
+            viewHolder.mAboutAppTV = (TextView) view.findViewById(R.id.tv_abouticon_app);
             viewHolder.mAppOptionll = (LinearLayout) view.findViewById(R.id.ll_option_app);
 
             view.setTag(viewHolder);
@@ -128,7 +128,7 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mSettingAppTV.setOnClickListener(listener);
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
-        viewHolder.mAboutAppBtn.setOnClickListener(listener);
+        viewHolder.mAboutAppTV.setOnClickListener(listener);
 
         return view;
     }
@@ -150,7 +150,7 @@ public class AppManagerAdapter extends BaseAdapter {
 
      static class ViewHolder{
         /*关于App*/
-         TextView mAboutAppBtn;
+         TextView mAboutAppTV;
         /* 启动App*/
         TextView mLuanchAppTV;
          /*卸载App*/
@@ -197,7 +197,7 @@ public class AppManagerAdapter extends BaseAdapter {
                     }
                      EngineUtils.uninstallApplication(context,appInfo);
                      break;
-                 case R.id.btn_abouticon_app:
+                 case R.id.tv_abouticon_app:
                      EngineUtils.AboutSign(context,appInfo);
                      break;
              }
