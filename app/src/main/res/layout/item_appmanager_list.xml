@@ -91,7 +91,7 @@
             android:layout_width="1px"
             android:layout_height="match_parent"
             android:background="@color/black30"/>
-        <TextView
+        <Button
             android:id="@+id/tv_abouticon_app"
             style="@style/tvyellow14sp"
             android:drawableTop="@drawable/abouticon_yellow_n"

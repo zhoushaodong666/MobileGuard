@@ -411,7 +411,7 @@ public class ExampleInstrumentedTest {
     public void t17AppManagerAboutButton() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
-        result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("MobileGuard"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("关于"));
         if(!result.exists()){
@@ -423,7 +423,7 @@ public class ExampleInstrumentedTest {
     public void t18AppManagerAboutVersion() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
-        result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("MobileGuard"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("关于"));
         result.clickAndWaitForNewWindow();
@@ -437,7 +437,7 @@ public class ExampleInstrumentedTest {
     public void t19AppManagerAboutVersion() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
-        result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("MobileGuard"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("关于"));
         result.clickAndWaitForNewWindow();
@@ -450,7 +450,7 @@ public class ExampleInstrumentedTest {
     public void t20AppManagerAboutVersion() throws Exception {
         result = mDevice.findObject(new UiSelector().textStartsWith("软件管家"));
         result.clickAndWaitForNewWindow();
-        result = mDevice.findObject(new UiSelector().textStartsWith("App1"));
+        result = mDevice.findObject(new UiSelector().textStartsWith("MobileGuard"));
         result.clickAndWaitForNewWindow();
         result = mDevice.findObject(new UiSelector().textStartsWith("关于"));
         result.clickAndWaitForNewWindow();
