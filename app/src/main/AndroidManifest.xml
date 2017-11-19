@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
     <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".App"
@@ -36,7 +37,6 @@
         <activity android:name=".m2theftguard.Setup2Activity" />
         <activity android:name=".m2theftguard.Setup3Activity" />
         <activity android:name=".m2theftguard.Setup4Activity" />
-
 
         <receiver
             android:name=".m2theftguard.receiver.BootCompleteReceiver"
@@ -97,7 +97,9 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".m4appmanager.AppManagerActivity"></activity>
+        <activity android:name=".m4appmanager.AppManagerActivity" />
+        <activity android:name=".m5virusscan.VirusScanActivity" />
+        <activity android:name=".m5virusscan.VirusScanSpeedActivity"/>
     </application>
 
 </manifest>
