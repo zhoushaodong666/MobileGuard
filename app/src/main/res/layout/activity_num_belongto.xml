@@ -29,8 +29,10 @@
     <TextView
         android:id="@+id/tv_searchresult"
         style="@style/textview16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="15dp"
-        android:textColor="@color/deep_gray"/>
+        android:textColor="@color/deep_gray" />
 
 </LinearLayout>

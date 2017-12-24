@@ -20,9 +20,11 @@
     <TextView
         android:id="@+id/tv_decription"
         style="@style/textview16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="30dp"
-        android:layout_toRightOf="@+id/imgv_left"/>
+        android:layout_toRightOf="@+id/imgv_left" />
     <View
         android:layout_width="match_parent"
         android:layout_height="1.0px"
