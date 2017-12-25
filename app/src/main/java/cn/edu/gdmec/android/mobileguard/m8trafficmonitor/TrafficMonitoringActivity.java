@@ -1,4 +1,3 @@
-
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
 import android.content.BroadcastReceiver;
@@ -61,7 +60,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         setContentView(R.layout.activity_traffic_monitoring);
         mSP = getSharedPreferences("config", MODE_PRIVATE);
         boolean flag = mSP.getBoolean("isset_operator", false);
-
+        // 如果没有设置运营商信息则进入信息设置页面
         if (!flag) {
             startActivity(new Intent(this, OperatorSetActivity.class));
             finish();
