@@ -26,7 +26,6 @@ public class AppLockDao {
 
     /**
      * 添加一条数据
-     * @return
      */
     public boolean insert(String packagename) {
         SQLiteDatabase db = openHelper.getWritableDatabase();
@@ -43,8 +42,6 @@ public class AppLockDao {
 
     /**
      * 删除一条数据
-     * @param packagename
-     * @return
      */
     public boolean delete(String packagename) {
         SQLiteDatabase db = openHelper.getWritableDatabase();
@@ -60,8 +57,6 @@ public class AppLockDao {
 
     /***
      * 查询某个包名是否存在
-     * @param packagename
-     * @return
      */
     public boolean find(String packagename) {
         SQLiteDatabase db = openHelper.getReadableDatabase();
@@ -79,7 +74,6 @@ public class AppLockDao {
 
     /**
      * 查询表中所有的包名
-     * @return
      */
     public List<String> findAll(){
         SQLiteDatabase db = openHelper.getReadableDatabase();

@@ -2,6 +2,7 @@ package cn.edu.gdmec.android.mobileguard.m4appmanager.adapter;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.text.format.Formatter;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,10 +20,10 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.DensityUtil;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.EngineUtils;
 
 /**
- * Created by Administrator on 2017/11/7.
+ * Created by Lenovo on 2017/11/10.
  */
 
-public class AppManagerAdapter extends BaseAdapter {
+public class AppManagerAdapter extends BaseAdapter{
     private List<AppInfo> UserAppInfos;
     private List<AppInfo> SystemAppInfos;
     private Context context;
@@ -92,8 +93,8 @@ public class AppManagerAdapter extends BaseAdapter {
             viewHolder.mShareAppTV = (TextView) view.findViewById(R.id.tv_share_app);
             viewHolder.mUninstallTV = (TextView) view.findViewById(R.id.tv_uninstall_app);
             viewHolder.mAppOptionLL = (LinearLayout) view.findViewById(R.id.ll_option_app);
-            viewHolder.mAboutBTN = (TextView) view.findViewById(R.id.tv_aboutapp);
-            viewHolder.mActivityTV = (TextView) view.findViewById(R.id.tv_activityapp);
+            viewHolder.mAppAboutTV = (TextView) view.findViewById(R.id.tv_about_app);
+            viewHolder.mAppActivityTV = (TextView) view.findViewById(R.id.tv_activity_app);
             view.setTag(viewHolder);
         }
         if(appInfo != null){
@@ -112,9 +113,8 @@ public class AppManagerAdapter extends BaseAdapter {
         viewHolder.mSettingAppTV.setOnClickListener(listener);
         viewHolder.mShareAppTV.setOnClickListener(listener);
         viewHolder.mUninstallTV.setOnClickListener(listener);
-        viewHolder.mAboutBTN.setOnClickListener(listener);
-        viewHolder.mActivityTV.setOnClickListener(listener);
-
+        viewHolder.mAppAboutTV.setOnClickListener(listener);
+        viewHolder.mAppActivityTV.setOnClickListener(listener);
         return view;
     }
     private TextView getTextView(){
@@ -134,8 +134,8 @@ public class AppManagerAdapter extends BaseAdapter {
         TextView mAppSizeTV;
         TextView mAppNameTV;
         LinearLayout mAppOptionLL;
-        TextView mAboutBTN;
-        TextView mActivityTV;
+        TextView mAppAboutTV;
+        TextView mAppActivityTV;
     }
     class MyClickListener implements View.OnClickListener{
         private AppInfo appInfo;
@@ -163,13 +163,14 @@ public class AppManagerAdapter extends BaseAdapter {
                     }
                     EngineUtils.uninstallApplication(context,appInfo);
                     break;
-                case R.id.tv_aboutapp:
-                    EngineUtils.showApplicationInfo(context,appInfo);
+                case R.id.tv_about_app:
+                    EngineUtils.aboutApplication(context,appInfo);
                     break;
-                case R.id.tv_activityapp:
-                    EngineUtils.showApplicationActivities(context,appInfo);
+                case R.id.tv_activity_app:
+                    EngineUtils.appActivity(context,appInfo);
                     break;
             }
         }
     }
+
 }

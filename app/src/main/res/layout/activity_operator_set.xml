@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,7 +10,7 @@
         android:layout_weight="100"
         android:orientation="vertical">
 
-        <include layout="@layout/titlebar"/>
+        <include layout="@layout/titlebar"></include>
 
         <LinearLayout
             style="@style/wrapcontent"
@@ -27,13 +27,11 @@
 
             <TextView
                 style="@style/textview16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:lineSpacingMultiplier="1.5"
-                android:text="@string/_operatorset_string"
+                android:text="仅一次简单设置，以后即可便捷矫正流量，时刻保持与运营商保持精准同步。"
                 android:textColor="@color/black"
-                android:textScaleX="1.1" />
+                android:textScaleX="1.1"/>
         </LinearLayout>
 
         <LinearLayout
@@ -45,22 +43,22 @@
 
             <TextView
                 style="@style/textview16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="运营商选择" />
+                android:text="运营商选择"/>
 
             <Spinner
                 android:id="@+id/spinner_operator_select"
                 android:layout_width="150dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="20dp"
+                android:spinnerMode="dropdown"
                 android:background="@drawable/operator_spinner_bg"
-                android:gravity="center"
-                android:spinnerMode="dropdown">
+                android:gravity="center">
+
             </Spinner>
 
         </LinearLayout>
     </LinearLayout>
+
     <Button
         android:id="@+id/btn_operator_finish"
         android:layout_width="280dp"

@@ -17,10 +17,15 @@ import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment.AppLockFragment;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.fragment.AppUnLockFragment;
 
+
+/**
+ * Created by Lenovo on 2017/12/23.
+ */
+
 public class AppLockActivity extends AppCompatActivity implements View.OnClickListener {
 
-    List<Fragment> mFragments = new ArrayList<Fragment>();
     private ViewPager mAppViewPager;
+    List<Fragment> mFragments = new ArrayList<Fragment>();
     private TextView mLockTV;
     private TextView mUnLockTV;
     private View slideLockView;

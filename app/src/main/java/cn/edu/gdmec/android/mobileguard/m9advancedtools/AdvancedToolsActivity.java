@@ -1,26 +1,31 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import cn.edu.gdmec.android.mobileguard.R;
 
-public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener{
+/**
+ * Created by Lenovo on 2017/12/16.
+ */
 
+public class AdvancedToolsActivity extends AppCompatActivity implements View.OnClickListener {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_advanced_tools);
         initView();
     }
     private void initView(){
-        findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_red));
-        ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
-        ((TextView) findViewById(R.id.tv_title)).setText("高级工具");
+        findViewById(R.id.rl_titlebar).setBackgroundColor(
+                getResources().getColor(R.color.bright_red));
+        ImageView mLeftImgv= (ImageView) findViewById(R.id.imgv_leftbtn);
+        ((TextView)findViewById(R.id.tv_title)).setText("高级工具");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
 
@@ -45,7 +50,7 @@ public class AdvancedToolsActivity extends AppCompatActivity implements View.OnC
         }
     }
     public void startActivity(Class<?> cls){
-        Intent intent = new Intent(this,cls);
+        Intent intent=new Intent(this,cls);
         startActivity(intent);
     }
 }

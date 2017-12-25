@@ -1,7 +1,7 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard.entity;
 
 /**
- * Created by 11388 on 2017/10/19.
+ * Created by Lenovo on 2017/10/20.
  */
 
 public class ContactInfo {

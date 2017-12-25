@@ -1,3 +1,4 @@
+
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor;
 
 import android.content.BroadcastReceiver;
@@ -57,7 +58,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_traffic_monitoring);
+        setContentView(R.layout.activity_triffic_monitor);
         mSP = getSharedPreferences("config", MODE_PRIVATE);
         boolean flag = mSP.getBoolean("isset_operator", false);
 
@@ -166,37 +167,6 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
         }
     }
 
-    /** 将字符串转化成Float类型数据 **/
-    private long getStringTofloat(String str) {
-        long flow = 0;
-        if (!TextUtils.isEmpty(str)) {
-            if (str.contains("K")) {
-                String[] split = str.split("K");
-                float m = Float.parseFloat(split[0]);
-                flow = (long) (m * 1024);
-            } else if (str.contains("M")) {
-                String[] split = str.split("M");
-                float m = Float.parseFloat(split[0]);
-                flow = (long) (m * 1024 * 1024);
-            } else if (str.contains("G")) {
-                String[] split = str.split("G");
-                float m = Float.parseFloat(split[0]);
-                flow = (long) (m * 1024 * 1024 * 1024);
-            }
-        }
-        return flow;
-    }
-
-    @Override
-    public void onDestroy() {
-        if (receiver != null) {
-            unregisterReceiver(receiver);
-            receiver = null;
-        }
-        super.onDestroy();
-        unbindService(conn);
-    }
-
     class CorrectFlowReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -279,5 +249,34 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
                         + Formatter.formatFileSize(context, (used + beyond)));
             }
         }
+    }
+    /** 将字符串转化成Float类型数据 **/
+    private long getStringTofloat(String str) {
+        long flow = 0;
+        if (!TextUtils.isEmpty(str)) {
+            if (str.contains("K")) {
+                String[] split = str.split("K");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m * 1024);
+            } else if (str.contains("M")) {
+                String[] split = str.split("M");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m * 1024 * 1024);
+            } else if (str.contains("G")) {
+                String[] split = str.split("G");
+                float m = Float.parseFloat(split[0]);
+                flow = (long) (m * 1024 * 1024 * 1024);
+            }
+        }
+        return flow;
+    }
+    @Override
+    public void onDestroy() {
+        if (receiver != null) {
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+        super.onDestroy();
+        unbindService(conn);
     }
 }

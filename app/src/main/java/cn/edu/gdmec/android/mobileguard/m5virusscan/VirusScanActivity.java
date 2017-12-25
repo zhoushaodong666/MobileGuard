@@ -20,28 +20,11 @@ import java.io.InputStream;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
-
+//111
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
     private TextView mVersionTV;
-    Handler handler = new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            AntiVirusDao dao = new AntiVirusDao(VirusScanActivity.this);
-            String virusVersion = dao.getVirusVersion();
-            mVersionTV = (TextView) findViewById(R.id.tv_version);
-            mVersionTV.setText("病毒数据库版本:"+virusVersion);
-            updateVesion(virusVersion);
-            super.handleMessage(msg);
-        }
-    };
-    VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
-        @Override
-        public void afterDownload(String filename) {
-            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +34,6 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         copyDB("antivirus.db","");
         initView();
     }
-
     //更新病毒库版本
     public void updateVesion(String dbVersion){
         final VersionUpdateUtils versionUpdateUtils = new VersionUpdateUtils(dbVersion,VirusScanActivity.this,downloadCallback,null);
@@ -63,6 +45,12 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             }
         }.start();
     }
+    VersionUpdateUtils.DownloadCallback downloadCallback = new VersionUpdateUtils.DownloadCallback() {
+        @Override
+        public void afterDownload(String filename) {
+            copyDB("antivirus.db", Environment.getExternalStoragePublicDirectory("/download/").getPath());
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -76,6 +64,17 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         //updateVesion(virusVersion);
         super.onResume();
     }
+    Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            AntiVirusDao dao = new AntiVirusDao(VirusScanActivity.this);
+            String virusVersion = dao.getVirusVersion();
+            mVersionTV = (TextView) findViewById(R.id.tv_version);
+            mVersionTV.setText("病毒数据库版本:"+virusVersion);
+            updateVesion(virusVersion);
+            super.handleMessage(msg);
+        }
+    };
 
     private void copyDB(final String dbname,final String fromPath){
         new Thread(){
@@ -118,6 +117,7 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
         mLeftImgv.setImageResource(R.drawable.back);
         mLastTimeTV = (TextView) findViewById(R.id.tv_lastscantime);
         findViewById(R.id.rl_allscanvirus).setOnClickListener(this);
+        findViewById(R.id.rl_cloudscanvirus).setOnClickListener(this);
     }
 
     @Override
@@ -129,6 +129,10 @@ public class VirusScanActivity extends AppCompatActivity implements View.OnClick
             case R.id.rl_allscanvirus:
                 startActivity(new Intent(this,VirusScanSpeedActivity.class));
                 break;
+            case R.id.rl_cloudscanvirus:
+                Intent intent = new Intent(this,VirusScanSpeedActivity.class);
+                intent.putExtra("cloud",true);
+                startActivity(intent);
         }
     }
 

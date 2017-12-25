@@ -38,9 +38,9 @@ public class AddBlackNumberActivity extends AppCompatActivity implements View.On
 
         mSmsCB= (CheckBox) findViewById(R.id.cb_blacknumber_sms);
         mTelCB= (CheckBox) findViewById(R.id.cb_blacknumber_tel);
-        mNumET= (EditText) findViewById(R.id.et_blacknumber);
+        mNumET= (EditText) findViewById(R.id.et_balcknumber);
         mNameET= (EditText) findViewById(R.id.et_blackname);
-        mTypeET =(EditText) findViewById(R.id.et_blacktype);
+        mTypeET= (EditText) findViewById(R.id.et_type);
         findViewById(R.id.add_blacknum_btn).setOnClickListener(this);
         findViewById(R.id.add_fromcontact_btn).setOnClickListener(this);
     }

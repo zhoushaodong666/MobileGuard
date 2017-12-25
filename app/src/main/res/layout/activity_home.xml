@@ -16,17 +16,16 @@
             android:layout_height="107dp"
             android:background="@drawable/superman"
             android:scaleType="fitXY"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_home"
             android:textSize="16sp"
-            android:text="主淫，我是你的手机小卫士"
+            android:text="主人，我是你的手机小护卫"
             android:textColor="#90000000"
             android:textScaleX="1.1"
-            android:typeface="normal" />
-    </LinearLayout>
+            android:typeface="normal"/>
+        </LinearLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -39,8 +38,7 @@
             android:horizontalSpacing="10dp"
             android:verticalSpacing="10dp"
             android:numColumns="3">
+
         </GridView>
-
     </RelativeLayout>
-
 </LinearLayout>

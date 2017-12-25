@@ -1,3 +1,4 @@
+
 package cn.edu.gdmec.android.mobileguard.m8trafficmonitor.service;
 
 import android.app.Service;
@@ -14,13 +15,37 @@ import java.util.Date;
 import cn.edu.gdmec.android.mobileguard.m8trafficmonitor.db.dao.TrafficDao;
 
 public class TrafficMonitoringService extends Service {
-    boolean flag = true;
     private long mOldRxBytes;
     private long mOldTxBytes;
     private TrafficDao dao;
     private SharedPreferences mSp;
     private long usedFlow;
+    boolean flag = true;
+    public class MyBinder extends Binder {
+        public TrafficMonitoringService getService(){
+            return TrafficMonitoringService.this;
+        }
+    }
     private MyBinder binder = new MyBinder();
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return binder;
+    }
+    public long getUsedFlow(){
+        return usedFlow;
+    }
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        mOldRxBytes = TrafficStats.getMobileRxBytes();
+        mOldTxBytes = TrafficStats.getMobileTxBytes();
+        dao = new TrafficDao(this);
+        mSp = getSharedPreferences("config", MODE_PRIVATE);
+        usedFlow = mSp.getLong("usedflow", 0);
+        mThread.start();
+    }
+
     private Thread mThread = new Thread() {
         public void run() {
             while (flag) {
@@ -72,24 +97,6 @@ public class TrafficMonitoringService extends Service {
     };
 
     @Override
-    public IBinder onBind(Intent intent) {
-        return binder;
-    }
-    public long getUsedFlow(){
-        return usedFlow;
-    }
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        mOldRxBytes = TrafficStats.getMobileRxBytes();
-        mOldTxBytes = TrafficStats.getMobileTxBytes();
-        dao = new TrafficDao(this);
-        mSp = getSharedPreferences("config", MODE_PRIVATE);
-        usedFlow = mSp.getLong("usedflow", 0);
-        mThread.start();
-    }
-
-    @Override
     public void onDestroy() {
         if (mThread != null & !mThread.interrupted()) {
             flag = false;
@@ -98,11 +105,5 @@ public class TrafficMonitoringService extends Service {
         }
         super.onDestroy();
 
-    }
-
-    public class MyBinder extends Binder {
-        public TrafficMonitoringService getService(){
-            return TrafficMonitoringService.this;
-        }
     }
 }

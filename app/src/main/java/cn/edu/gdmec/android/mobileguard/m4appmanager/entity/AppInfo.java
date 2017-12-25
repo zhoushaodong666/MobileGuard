@@ -1,47 +1,35 @@
 package cn.edu.gdmec.android.mobileguard.m4appmanager.entity;
 
+import android.content.pm.ActivityInfo;
+import android.content.pm.PackageInfo;
 import android.graphics.drawable.Drawable;
 
+import java.lang.reflect.Array;
+
 /**
- * Created by 11388 on 2017/11/9.
+ * Created by Lenovo on 2017/11/10.
  */
 
 public class AppInfo {
-    /** 应用程序包名 */
     public String packageName;
-    /** 应用程序图标 */
     public Drawable icon;
-    /** 应用程序名称 */
     public String appName;
-    /** 应用程序路径 */
     public String apkPath;
-    /** 应用程序大小 */
     public long appSize;
-    /** 是否是手机存储 */
     public boolean isInRoom;
-    /** 是否是用户应用 */
     public boolean isUserApp;
-    /** 是否选中，默认都为false */
-    public boolean isSelected = false;
-    /**版本号*/
-    public String versionName;
-    /**安装时间*/
-    public long firstInstallTime;
-    /**签名信息*/
+    public boolean isSelected=false;
+    public String version;
+    public String installTime;
     public String signature;
-    /**权限信息*/
-    public String requestedPermissions;
-    /**活动信息*/
-    public String activities;
-    //新加
-    public boolean isLock;
-
+    public String permissions;
+    public String appActivity;
     public String getAppLocation(boolean isInRoom){
         if(isInRoom){
             return "手机内存";
-        }else{
-            return "外部内存";
+        }else {
+            return "外部存储";
         }
     }
+    public boolean isLock;
 }
-

@@ -3,18 +3,18 @@ package cn.edu.gdmec.android.mobileguard.m2theftguard.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-
 import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.apache.http.util.TextUtils;
+
 import cn.edu.gdmec.android.mobileguard.R;
 
 /**
- * Created by 11388 on 2017/10/3.
+ * Created by Lenovo on 2017/9/27.
  */
 
 public class InterPasswordDialog extends Dialog implements View.OnClickListener {
@@ -22,19 +22,18 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener 
     private EditText mInterET;
     private Button mOKBtn;
     private Button mCancleBtn;
-    private Context context;
     private MyCallBack myCallBack;
-
+    private Context context;
     public InterPasswordDialog(@NonNull Context context){
         super(context, R.style.dialog_custom);
         this.context = context;
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         setContentView(R.layout.inter_password_dialog);
         super.onCreate(savedInstanceState);
         initView();
-
     }
 
     private void initView(){
@@ -52,30 +51,25 @@ public class InterPasswordDialog extends Dialog implements View.OnClickListener 
         }
     }
 
-
     @Override
-    public void onClick(View view) {
+    public void onClick(View view){
         switch (view.getId()){
             case R.id.btn_comfirm:
-              myCallBack.confirm();
+                myCallBack.confirm();
                 break;
             case R.id.btn_dismiss:
-                myCallBack.cancle();
                 break;
         }
     }
-
     public String getPassword(){
         return mInterET.getText().toString();
     }
-
     public void setCallBack(MyCallBack myCallBack){
         this.myCallBack = myCallBack;
     }
 
-    public interface  MyCallBack{
+    public interface MyCallBack{
         void confirm();
         void cancle();
-
     }
 }

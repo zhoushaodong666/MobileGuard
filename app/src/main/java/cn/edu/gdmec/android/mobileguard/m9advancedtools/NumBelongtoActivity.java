@@ -1,7 +1,8 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -19,28 +20,32 @@ import java.io.InputStream;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.NumBelongtoDao;
 
-public class NumBelongtoActivity extends AppCompatActivity implements View.OnClickListener{
+/**
+ * Created by Lenovo on 2017/12/16.
+ */
+
+public class NumBelongtoActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText mNumET;
     private TextView mResultTV;
-    private String dbName = "address.db";
+    private String dbName="address.db";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_num_belongto);
         initView();
         copyDB(dbName);
     }
+
     private void initView(){
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_red));
-        ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
-        ((TextView) findViewById(R.id.tv_title)).setText("号码归属地查询");
+        ImageView mLeftImgv= (ImageView) findViewById(R.id.imgv_leftbtn);
+        ((TextView)findViewById(R.id.tv_title)).setText("号码归属地查询");
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
         findViewById(R.id.btn_searchnumbelongto).setOnClickListener(this);
-        mNumET = (EditText) findViewById(R.id.et_num_numbelongto);
-        mResultTV = (TextView) findViewById(R.id.tv_searchresult);
-
+        mNumET= (EditText) findViewById(R.id.et_num_numbelongto);
+        mResultTV= (TextView) findViewById(R.id.tv_searchresult);
         mNumET.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -54,8 +59,8 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
 
             @Override
             public void afterTextChanged(Editable s) {
-                String string = s.toString().toString().trim();
-                if(string.length() == 0){
+                String string=s.toString().toString().trim();
+                if (string.length()==0){
                     mResultTV.setText("");
                 }
             }
@@ -69,43 +74,46 @@ public class NumBelongtoActivity extends AppCompatActivity implements View.OnCli
                 finish();
                 break;
             case R.id.btn_searchnumbelongto:
-                String phonenumber = mNumET.getText().toString().trim();
-                if(!TextUtils.isEmpty(phonenumber)){
-                    File file = new File(getFilesDir(),dbName);
-                    if(!file.exists() || file.length() <= 0){
+                //判断edittext中的号码是否为空
+                //判断数据库是否存在
+                String phonenumber=mNumET.getText().toString().trim();
+                if (!TextUtils.isEmpty(phonenumber)){
+                    File file=new File(getFilesDir(),dbName);
+                    if (!file.exists()||file.length()<=0){
                         copyDB(dbName);
                     }
-                    String location = NumBelongtoDao.getLocation(this,phonenumber);
+                    //查询数据库
+                    String location= NumBelongtoDao.getLocation(this,phonenumber);
                     mResultTV.setText("归属地："+location);
-                }else{
+                }else {
                     Toast.makeText(this,"请输入需要查询的号码",Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
     }
-    private void copyDB(final String dbname){
+    //拷贝资产目录下的数据库文件
+    private void copyDB(final String dbName){
         new Thread(){
             public void run(){
                 try{
-                    File file = new File(getFilesDir(),dbname);
-                    if(file.exists() && file.length() >0){
+                    File file=new File(getFilesDir(),dbName);
+                    if (file.exists()&&file.length()>0){
                         Log.i("NumBelongtoActivity","数据库已存在");
                         return;
                     }
-                    InputStream is = getAssets().open(dbname);
-                    FileOutputStream fos = openFileOutput(dbname,MODE_PRIVATE);
-                    byte[] buffer = new byte[1024];
-                    int len = 0;
-                    while((len = is.read(buffer)) != -1){
+                    InputStream is=getAssets().open(dbName);
+                    FileOutputStream fos=openFileOutput(dbName,MODE_PRIVATE);
+                    byte[] buffer=new byte[1024];
+                    int len=0;
+                    while ((len=is.read(buffer))!=-1){
                         fos.write(buffer,0,len);
                     }
                     is.close();
                     fos.close();
-                }catch(Exception e){
+                }catch (Exception e){
                     e.printStackTrace();
                 }
             }
-            ;
         }.start();
     }
 }
