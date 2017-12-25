@@ -32,7 +32,7 @@ import cn.edu.gdmec.android.mobileguard.m5virusscan.adapter.ScanVirusAdapter;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.entity.ScanAppInfo;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.utils.UrlClient;
-
+//111
 public class VirusScanSpeedActivity extends AppCompatActivity implements View.OnClickListener{
     protected static final int SCAN_BENGIN = 100;
     protected static final int SCANNING = 101;

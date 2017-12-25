@@ -20,7 +20,7 @@ import java.io.InputStream;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m1home.utils.VersionUpdateUtils;
 import cn.edu.gdmec.android.mobileguard.m5virusscan.dao.AntiVirusDao;
-
+//111
 public class VirusScanActivity extends AppCompatActivity implements View.OnClickListener{
     private TextView mLastTimeTV;
     private SharedPreferences mSP;
