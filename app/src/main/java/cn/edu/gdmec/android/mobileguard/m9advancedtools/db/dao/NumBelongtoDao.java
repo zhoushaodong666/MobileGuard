@@ -5,12 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.TextUtils;
 
-/**
- * Created by 11388 on 2017/12/24.
- */
+
 
 public class NumBelongtoDao {
-    public static String getLocation(Context context, String phonenumber){
+    public static String getLocation(Context context,String phonenumber){
         String location = phonenumber;
         String dbname = context.getFilesDir() + "/address.db";
         //System.out.println(dbname);
