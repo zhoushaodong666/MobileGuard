@@ -3,8 +3,9 @@ package cn.edu.gdmec.android.mobileguard.m9advancedtools;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.animation.Animation;
@@ -19,6 +20,10 @@ import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.R;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.MD5Utils;
 
+/**
+ * Created by Lenovo on 2017/12/23.
+ */
+
 public class EnterPswActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView mAppIcon;
     private TextView mAppNameTV;
@@ -30,14 +35,14 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
     private String packagename;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_enter_psw);
-        sp = getSharedPreferences("config", MODE_PRIVATE);
-        password = sp.getString("PhoneAntiTheftPWD", null);
-        Intent intent = getIntent();
-        packagename = intent.getStringExtra("packagename");
-        PackageManager pm = getPackageManager();
+        sp=getSharedPreferences("config",MODE_PRIVATE);
+        password=sp.getString("PhoneAntiTheftPWD",null);
+        Intent intent=getIntent();
+        packagename=intent.getStringExtra("packagename");
+        PackageManager pm=getPackageManager();
         initView();
         try {
             mAppIcon.setImageDrawable(pm.getApplicationInfo(packagename, 0).loadIcon(pm));
@@ -46,10 +51,9 @@ public class EnterPswActivity extends AppCompatActivity implements View.OnClickL
             e.printStackTrace();
         }
     }
-    /**
-     * 初始化控件
-     */
-    private void initView() {
+
+    /*初始化控件*/
+    private void initView(){
         mAppIcon = (ImageView) findViewById(R.id.imgv_appicon_enterpsw);
         mAppNameTV = (TextView) findViewById(R.id.tv_appname_enterpsw);
         mPswET = (EditText) findViewById(R.id.et_psw_enterpsw);

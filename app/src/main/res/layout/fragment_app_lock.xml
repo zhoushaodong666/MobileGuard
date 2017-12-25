@@ -11,8 +11,8 @@
             android:id="@+id/tv_lock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/graye5"
-            android:padding="5dp"/>
+            android:padding="5dp"
+            android:background="@color/graye5"/>
 
         <CheckBox
             android:id="@+id/cb_applock_service"

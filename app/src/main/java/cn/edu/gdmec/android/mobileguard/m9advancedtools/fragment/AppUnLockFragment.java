@@ -26,10 +26,14 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.adapter.AppLockAdapter;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
+/**
+ * Created by Lenovo on 2017/12/23.
+ */
+
 public class AppUnLockFragment extends Fragment {
-    List<AppInfo> unlockApps = new ArrayList<AppInfo>();
     private TextView mUnLockTV;
     private ListView mUnLockLV;
+    List<AppInfo> unlockApps = new ArrayList<AppInfo>();
     private AppLockAdapter adapter;
     private AppLockDao dao;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);

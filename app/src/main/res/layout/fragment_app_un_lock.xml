@@ -6,8 +6,8 @@
         android:id="@+id/tv_unlock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/graye5"
-        android:padding="5dp"/>
+        android:padding="5dp"
+        android:background="@color/graye5"/>
     <ListView
         android:id="@+id/lv_unlock"
         android:layout_width="match_parent"

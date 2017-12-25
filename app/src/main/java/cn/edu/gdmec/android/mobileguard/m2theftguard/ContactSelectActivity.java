@@ -1,9 +1,9 @@
 package cn.edu.gdmec.android.mobileguard.m2theftguard;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -17,15 +17,19 @@ import cn.edu.gdmec.android.mobileguard.m2theftguard.adapter.ContactAdapter;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.entity.ContactInfo;
 import cn.edu.gdmec.android.mobileguard.m2theftguard.utils.ContactlnfoParser;
 
+/**
+ * Created by Lenovo on 2017/10/21.
+ */
+
 public class ContactSelectActivity extends AppCompatActivity implements View.OnClickListener{
     private ListView mListView;
     private ContactAdapter adapter;
     private List<ContactInfo> systemContacts;
-    Handler mHandler = new Handler(){
+    Handler mHander = new Handler(){
         public void handleMessage(android.os.Message msg){
             switch (msg.what){
                 case 10:
-                    if(systemContacts != null){
+                    if (systemContacts!=null){
                         adapter = new ContactAdapter(systemContacts,ContactSelectActivity.this);
                         mListView.setAdapter(adapter);
                     }
@@ -45,16 +49,18 @@ public class ContactSelectActivity extends AppCompatActivity implements View.OnC
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
         mLeftImgv.setOnClickListener(this);
         mLeftImgv.setImageResource(R.drawable.back);
+        //导航条颜色
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.purple));
-        mListView = (ListView) findViewById(R.id.lv_contact);
+        mListView=(ListView)findViewById(R.id.lv_contact);
         new Thread(){
             public void run(){
                 systemContacts = ContactlnfoParser.getSystemContact(ContactSelectActivity.this);
                 systemContacts.addAll(ContactlnfoParser.getSimContacts(ContactSelectActivity.this));
-                mHandler.sendEmptyMessage(10);
+                mHander.sendEmptyMessage(10);
             };
         }.start();
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ContactInfo item = (ContactInfo) adapter.getItem(position);

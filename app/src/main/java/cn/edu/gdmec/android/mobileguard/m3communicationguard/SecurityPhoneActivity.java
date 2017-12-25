@@ -21,6 +21,9 @@ import cn.edu.gdmec.android.mobileguard.m3communicationguard.adapter.BlackContac
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.db.dao.BlackNumberDao;
 import cn.edu.gdmec.android.mobileguard.m3communicationguard.entity.BlackContactInfo;
 
+/**
+ * Created by Lenovo on 2017/11/4.
+ */
 
 public class SecurityPhoneActivity extends AppCompatActivity implements View.OnClickListener{
     //有黑名单显示的
@@ -30,7 +33,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
     private BlackNumberDao dao;
     private ListView mListView;
     private int pagenumber=0;
-    private int pagesize=4;
+    private int pagesize=20;
     private int totalNumber;
     private List<BlackContactInfo> pageBlackNumber=new ArrayList<BlackContactInfo>();
     private BlackContactAdapter adapter;
@@ -100,7 +103,7 @@ public class SecurityPhoneActivity extends AppCompatActivity implements View.OnC
             }
         });
 
-    }
+    }//。。
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

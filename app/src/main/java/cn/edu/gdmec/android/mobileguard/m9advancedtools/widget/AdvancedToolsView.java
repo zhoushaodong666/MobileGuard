@@ -1,19 +1,16 @@
 package cn.edu.gdmec.android.mobileguard.m9advancedtools.widget;
 
+import android.widget.RelativeLayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import cn.edu.gdmec.android.mobileguard.R;
 
-/**
- * Created by 11388 on 2017/12/24.
- */
+
 
 public class AdvancedToolsView extends RelativeLayout {
     private TextView mDescriptionTV;
@@ -23,16 +20,15 @@ public class AdvancedToolsView extends RelativeLayout {
     public AdvancedToolsView(Context context){
         super(context);
         init(context);
-
     }
-    public AdvancedToolsView(Context context, AttributeSet attrs, int defStyle){
+    public AdvancedToolsView(Context context,AttributeSet attrs,int defStyle){
         super(context,attrs,defStyle);
         init(context);
     }
 
     public AdvancedToolsView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        TypedArray mTypedArray = context.obtainStyledAttributes(attrs, R.styleable.AdvancedToolsView);
+        TypedArray mTypedArray = context.obtainStyledAttributes(attrs,R.styleable.AdvancedToolsView);
         desc = mTypedArray.getString(R.styleable.AdvancedToolsView_desc);
         drawable = mTypedArray.getDrawable(R.styleable.AdvancedToolsView_android_src);
         mTypedArray.recycle();

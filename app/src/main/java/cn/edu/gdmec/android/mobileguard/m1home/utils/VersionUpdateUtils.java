@@ -37,10 +37,6 @@ import static android.content.Context.DOWNLOAD_SERVICE;
 
 
 public class VersionUpdateUtils {
-    private static final int MESSAGE_IO_ERROR = 102;
-    private static final int MESSAGE_JSON_ERROR = 103;
-    private static final int MESSAGE_SHOW_DIALOG = 104;
-    private static final int MESSAGE_ENTERHOME = 105;
     private String mVersion;
     private Activity context;
     private VersionEntity versionEntity;
@@ -51,6 +47,12 @@ public class VersionUpdateUtils {
     //回调
     private DownloadCallback downloadCallback;
     private long downloadId;
+
+    private static final int MESSAGE_IO_ERROR = 102;
+    private static final int MESSAGE_JSON_ERROR = 103;
+    private static final int MESSAGE_SHOW_DIALOG = 104;
+    private static final int MESSAGE_ENTERHOME = 105;
+
     private Handler handler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -103,10 +105,10 @@ public class VersionUpdateUtils {
                 String result = EntityUtils.toString(httpEntity, "utf-8");
                 JSONObject jsonObject = new JSONObject(result);
                 versionEntity = new VersionEntity();
-                versionEntity.versioncode = jsonObject.getString("code");
+                versionEntity.versionCode = jsonObject.getString("code");
                 versionEntity.description = jsonObject.getString("des");
                 versionEntity.apkurl = jsonObject.getString("apkurl");
-                if (!mVersion.equals(versionEntity.versioncode)) {
+                if (!mVersion.equals(versionEntity.versionCode)) {
                     handler.sendEmptyMessage(MESSAGE_SHOW_DIALOG);
                 }
             }
@@ -118,7 +120,7 @@ public class VersionUpdateUtils {
     }
     private void showUpdateDialog(final VersionEntity versionEntity){
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("检查到新版本："+versionEntity.versioncode);
+        builder.setTitle("检查到新版本："+versionEntity.versionCode);
         builder.setMessage(versionEntity.description);
         builder.setCancelable(false);
         builder.setIcon(R.mipmap.ic_launcher_round);
@@ -138,7 +140,9 @@ public class VersionUpdateUtils {
         });
         builder.show();
     }
-    private void enterHome(){
+    private void enterHome(
+
+    ){
         handler.sendEmptyMessageDelayed(MESSAGE_ENTERHOME,2000);
     }
     private void downloadNewApk(String apkurl){

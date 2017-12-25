@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
     <include layout="@layout/titlebar"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -15,7 +17,7 @@
             android:layout_centerInParent="true"
             android:textColor="@color/white"
             android:textSize="38sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,25 +32,23 @@
                 android:id="@+id/imgv_scanningicon"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/scanning_icon" />
+                android:background="@drawable/scanning_icon"/>
 
             <TextView
-                android:id="@+id/tv_scansapp"
+                android:id="@+id/tv_scanapp"
                 style="@style/textview16sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:singleLine="true"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"/>
+
         </LinearLayout>
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/lv_scanapps"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="10"/>
-
+    android:id="@+id/lv_scanapps"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="10" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,4 +62,7 @@
             android:background="@drawable/cancle_scan_btn_selector"/>
 
     </LinearLayout>
+
+
+
 </LinearLayout>

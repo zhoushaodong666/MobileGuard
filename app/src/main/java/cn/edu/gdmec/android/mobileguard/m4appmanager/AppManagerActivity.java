@@ -4,11 +4,12 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.format.Formatter;
 import android.view.View;
 import android.widget.AbsListView;
@@ -25,7 +26,12 @@ import cn.edu.gdmec.android.mobileguard.m4appmanager.adapter.AppManagerAdapter;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.entity.AppInfo;
 import cn.edu.gdmec.android.mobileguard.m4appmanager.utils.AppInfoParser;
 
+/**
+ * Created by Lenovo on 2017/11/11.
+ */
+
 public class AppManagerActivity extends AppCompatActivity implements View.OnClickListener{
+    //手机剩余内存
     private TextView mPhoneMemoryTV;
     private TextView mSDMemoryTV;
     private ListView mListView;
@@ -34,7 +40,8 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
     private List<AppInfo> systemAppInfos = new ArrayList<AppInfo>();
     private AppManagerAdapter adapter;
     private TextView mAppNumTV;
-    private TextView mAboutTV;
+    private TextView mAppAboutTV;
+    private TextView mAppActivityTV;
     private UninstallRececiver receciver;
 
     private Handler mHandler = new Handler(){
@@ -73,10 +80,16 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
             };
         }.start();
     }
+    class UninstallRececiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            initData();
+        }
+    }
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_app_manager);
         receciver = new UninstallRececiver();
         IntentFilter intentFilter = new IntentFilter(Intent.ACTION_PACKAGE_REMOVED);
@@ -84,7 +97,6 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         registerReceiver(receciver,intentFilter);
         initView();
     }
-
     private void initView(){
         findViewById(R.id.rl_titlebar).setBackgroundColor(getResources().getColor(R.color.bright_yellow));
         ImageView mLeftImgv = (ImageView) findViewById(R.id.imgv_leftbtn);
@@ -95,7 +107,8 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         mSDMemoryTV = (TextView) findViewById(R.id.tv_sdmemory_appmanager);
         mAppNumTV = (TextView) findViewById(R.id.tv_appnumber);
         mListView = (ListView) findViewById(R.id.lv_appmanager);
-        mAboutTV = (TextView) findViewById(R.id.tv_aboutapp);
+        mAppAboutTV = (TextView) findViewById(R.id.tv_about_app);
+        mAppActivityTV= (TextView) findViewById(R.id.tv_activity_app);
         getMemoryFromPhone();
         initData();
         initListener();
@@ -109,7 +122,6 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
-
     private void getMemoryFromPhone(){
         long avail_sd = Environment.getExternalStorageDirectory().getFreeSpace();
         long avail_rom = Environment.getDataDirectory().getFreeSpace();
@@ -118,7 +130,6 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         mPhoneMemoryTV.setText("剩余手机内存：" + str_avail_rom);
         mSDMemoryTV.setText("剩余SD卡内存："+str_avail_sd);
     }
-
     private void initListener(){
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -168,12 +179,5 @@ public class AppManagerActivity extends AppCompatActivity implements View.OnClic
         unregisterReceiver(receciver);
         receciver = null;
         super.onDestroy();
-    }
-
-    class UninstallRececiver extends BroadcastReceiver{
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            initData();
-        }
     }
 }

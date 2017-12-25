@@ -20,9 +20,11 @@ import cn.edu.gdmec.android.mobileguard.App;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.EnterPswActivity;
 import cn.edu.gdmec.android.mobileguard.m9advancedtools.db.dao.AppLockDao;
 
-//程序锁服务
+/**
+ * Created by Lenovo on 2017/12/23.
+ */
+
 public class AppLockService extends Service {
-    /** 是否开启程序锁服务的标志 */
     private boolean flag = false;
     private AppLockDao dao;
     private Uri uri = Uri.parse(App.APPLOCK_CONTENT_URI);
@@ -35,6 +37,40 @@ public class AppLockService extends Service {
     private String tempStopProtectPackname;
     private AppLockReceiver receiver;
     private MyObserver observer;
+
+    // 广播接收者
+    class AppLockReceiver extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (App.APPLOCK_ACTION.equals(intent.getAction())) {
+                tempStopProtectPackname = intent.getStringExtra("packagename");
+            } else if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
+                tempStopProtectPackname = null;
+                // 停止监控程序
+                flag = false;
+            } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
+                // 开启监控程序
+                if (flag == false) {
+                    startApplockService();
+                }
+            }
+        }
+    }
+
+    // 内容观察者
+    class MyObserver extends ContentObserver {
+
+        public MyObserver(Handler handler) {
+            super(handler);
+        }
+
+        @Override
+        public void onChange(boolean selfChange) {
+            packagenames = dao.findAll();
+            super.onChange(selfChange);
+        }
+    }
 
     @Override
     public void onCreate() {
@@ -123,39 +159,5 @@ public class AppLockService extends Service {
                 }
             };
         }.start();
-    }
-
-    // 广播接收者
-    class AppLockReceiver extends BroadcastReceiver {
-
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if (App.APPLOCK_ACTION.equals(intent.getAction())) {
-                tempStopProtectPackname = intent.getStringExtra("packagename");
-            } else if (Intent.ACTION_SCREEN_OFF.equals(intent.getAction())) {
-                tempStopProtectPackname = null;
-                // 停止监控程序
-                flag = false;
-            } else if (Intent.ACTION_SCREEN_ON.equals(intent.getAction())) {
-                // 开启监控程序
-                if (flag == false) {
-                    startApplockService();
-                }
-            }
-        }
-    }
-
-    // 内容观察者
-    class MyObserver extends ContentObserver {
-
-        public MyObserver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        public void onChange(boolean selfChange) {
-            packagenames = dao.findAll();
-            super.onChange(selfChange);
-        }
     }
 }
