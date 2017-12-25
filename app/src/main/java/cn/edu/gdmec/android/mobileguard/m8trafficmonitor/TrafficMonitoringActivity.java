@@ -56,7 +56,7 @@ public class TrafficMonitoringActivity extends AppCompatActivity implements View
     };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);//22
         setContentView(R.layout.activity_traffic_monitoring);
         mSP = getSharedPreferences("config", MODE_PRIVATE);
         boolean flag = mSP.getBoolean("isset_operator", false);
